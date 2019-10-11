@@ -52,3 +52,5 @@ Write out your proposed algorithm in plain English or pseudocode AND give the ru
         If the egg breaks, the next floor is floor `f`.
         If the egg doesn't break, your are on floor `f`.
 ```
+
+The runtime complexity is `O(n)`.
