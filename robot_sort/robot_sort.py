@@ -97,8 +97,46 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        print("Ok, let's get the party sorted!")
 
+        # Set Swapped flag to True (Light on)
+        self.set_light_on()
+
+        # As long as light is on, there's items to be sorted
+        while self.light_is_on():
+            # Set Swapped flag to False (Light off)
+            self.set_light_off()
+            # Go through all items to the right
+            while self.can_move_right():
+                # Pick the item at current position
+                self.swap_item()
+                # Move to the right
+                self.move_right()
+
+                # If held item greater than the current one
+                if self.compare_item() == 1:
+                    # Swap the item
+                    self.swap_item()
+                    # Set Swapped flag to True (Light on)
+                    self.set_light_on()
+            # When we can't move right anymore, pick the current item (rightmost item)
+            self.swap_item()
+
+            # Go through all items to the left
+            while self.can_move_left():
+                # Pick the item at current position
+                self.swap_item()
+                # Move to the left
+                self.move_left()
+
+                # If held item smaller than the current one
+                if self.compare_item() == -1:
+                    # Swap the item
+                    self.swap_item()
+                    # Set Swapped flag to True (Light on)
+                    self.set_light_on()
+            # When we can't move left anymore, pick the current item (rightmost item)
+            self.swap_item()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
